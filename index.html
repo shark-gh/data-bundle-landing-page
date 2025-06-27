@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Bundle Business Ghana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Nanum Gothic', sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .countdown-bar {
+      background-color: #ff4d4d;
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      background: #ffffff;
+      padding: 4rem 2rem;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .hero-text, .hero-image {
+      flex: 1;
+      min-width: 280px;
+      max-width: 600px;
+      padding: 1rem;
+    }
+    .hero-text h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .hero-text ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    .hero-text ul li::before {
+      content: '✔️';
+      margin-right: 8px;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    .hero-image img:hover {
+      transform: scale(1.05);
+    }
+    .cta-button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #0056b3;
+    }
+    .info-boxes {
+      background: #f0f2f5;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .info-box {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .info-box:hover {
+      transform: translateY(-5px);
+    }
+    .info-box h3 {
+      font-weight: bold;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .pricing {
+      background: #eef1f5;
+      color: #333;
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+    .pricing-description {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+    .pricing-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+    .pricing-content img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    .pricing-content img:hover {
+      transform: scale(1.05);
+    }
+    .pricing-title {
+      background: #007bff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .compare-icon {
+      font-size: 2rem;
+    }
+    .testimonials {
+      background: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+    .testimonials h2 {
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+    .testimonial-grid img {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .testimonial-grid img:hover {
+      transform: scale(1.05);
+    }
+    .bottom-cta {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 3.5s ease-in-out;
+    }
+    .bottom-cta button {
+      background-color: white;
+      color: #007bff;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .bottom-cta button:hover {
+      background-color: #0056b3;
+      color: white;
+      border-color: #0056b3;
+    }
+    .footer-note {
+      background: #1c1c1c;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .hero, .pricing-content {
+        flex-direction: column;
+      }
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent 70%);
+      animation: pulse 6s infinite linear;
+      z-index: 0;
+    }
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes pulse {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-25%); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+  <script>
+    let countdownMinutes = 60;
+    let endTime = new Date().getTime() + countdownMinutes * 60000;
+    function updateCountdown() {
+      let now = new Date().getTime();
+      let distance = endTime - now;
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "⏳ Time's up! Offer may expire soon!";
+      } else {
+        document.getElementById("countdown").innerHTML = `🔥 Offer ends in ${minutes}m ${seconds}s`;
+      }
+    }
+    setInterval(updateCountdown, 1000);
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo-wrapper">
+      <div class="logo-circle">
+        <img src="circular_photo.png" alt="Logo" width="40" height="40" />
+      </div>
+      <h1>Start Making Money online by Selling Data Bundles in Ghana!</h1>
+    </div>
+  </header>
+
+  <div class="countdown-bar" id="countdown">🔥 Offer ends soon...</div>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Join my FREE WhatsApp Class<br />and Discover how to Earn<br />GHS 100–200 daily, selling Data Bundles.</h1>
+      <ul>
+        <li>No Prior Experience needed</li>
+        <li>100% Mobile phone-based Business</li>
+        <li>Low Startup Costs</li>
+        <li>Support and Guidance provided</li>
+      </ul>
+      <button class="cta-button" onclick="window.location.href='https://shorturl.at/XIBqT'">Click to join WhatsApp group Now!</button>
+    </div>
+    <div class="hero-image">
+      <img src="adsflyer.png" alt="Flyer Mockup" />
+    </div>
+  </section>
+
+  <section class="info-boxes">
+    <div class="info-box">
+      <h3>How the Business Works</h3>
+      <p>Buy data at CHEAPER Prices, and resell in smaller packages to customers at a profit.</p>
+    </div>
+    <div class="info-box">
+      <h3>Why It Works</h3>
+      <p>Everyone needs data daily. You provide Affordable Bundles instantly with ease.</p>
+    </div>
+    <div class="info-box">
+      <h3>Benefits</h3>
+      <p>Work from home, earn daily profits, Get FREE Training and support along the way.</p>
+    </div>
+  </section>
+  <div style="text-align:center; padding: 1rem;">
+    <button class="cta-button" onclick="window.location.href='https://bit.ly/bydata'">Click to WhatsApp me now to JOIN!</button>
+  </div>
+
+  <section class="pricing">
+    <div class="pricing-description">Compare the bulk data Purchase Prices to your Selling Prices and see how much PROFIT you can make Daily!</div>
+    <div class="pricing-content">
+      <div>
+        <div class="pricing-title">Purchase Prices</div>
+        <img src="system_prices.png" alt="Purchase Flyer" />
+      </div>
+      <div class="compare-icon">⇆</div>
+      <div>
+        <div class="pricing-title">Selling Prices</div>
+        <img src="dataprices_flyer.png" alt="Selling Flyer" />
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Real Testimonials & Proofs from Happy Clients</h2>
+    <div class="testimonial-grid">
+      <img src="screenshot_2.png" alt="Testimonial 1" />
+      <img src="screenshot_4.png" alt="Testimonial 2" />
+      <img src="screenshot_5.png" alt="Testimonial 3" />
+      <img src="screenshot_3.png" alt="Testimonial 4" />
+    </div>
+  </section>
+
+  <section class="bottom-cta">
+    <button onclick="window.location.href='https://shorturl.at/XIBqT'">Join WhatsApp Group</button>
+    <button onclick="window.location.href='https://bit.ly/bydata'">Message Me to Start Now</button>
+  </section>
+
+  <footer class="footer-note">
+    © Brayao 2025 — Contact: 0242516666
+  </footer>
+</body>
+</html>
